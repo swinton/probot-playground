@@ -1,10 +1,13 @@
 #!/bin/bash
 
+cd $( dirname "$0" )
+CURRENT_DIR=$( pwd )
+
 # Create new container
 container=$( docker run --name probot-playground \
   --interactive \
   --detach \
-  --volume /Users/swinton/scratch/probot-playground:/build \
+  --volume "${CURRENT_DIR}:/build" \
   probot-playground )
 
 # Install production dependencies
